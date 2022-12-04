@@ -1,0 +1,24 @@
+Management system for a boxing gym
+
+Manage the boxer, trainer and money of the gym.
+
+/*gym*/
+Total    //total = Student fee - (Teacher salary + cost)
+boxer Fee
+boxers
+Trainer Salary
+trainers
+cost     // Cost of running the gym not the salary
+
+/*trainer*/
+name
+seniority		//new(2 years and less) old(3 years and more)
+Hours worked		//minimum 30h max 40h, no overtime
+Salary (Hourly)		//new: 2$ old 4$
+
+/*boxer*/
+id
+name
+Fee Total			//200$ or 500$
+Fee Payed			//Fee payed to that point
+level of the boxer		//beginner(fee is 200$),  intermediate(fee is 200$), professional(fee is 500$): Can do professional fight
