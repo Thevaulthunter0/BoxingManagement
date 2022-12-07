@@ -15,7 +15,7 @@ public class boxer {
 	//Constructor to create a new boxer object by initializing the values//
 	public boxer(int id, String strName, String strLevel) {
 		//Calculation of the fee total based on the level of the boxer
-		if(strLevel == "Begginer" || strLevel == "Intermediate") {
+		if(strLevel == "Beginer" || strLevel == "Intermediate") {
 		iFeeTotal = 100;
 		}
 		else if(strLevel == "Professional") {

@@ -21,21 +21,21 @@ public class trainer {
 		this.iHours = iHours;
 		//Calculation of the salary based on the seniority and hours for the week
 		if(iSeniority <= 2) {
-			this.iSalary=iHours * 2; 
+			iSalary=iHours * 2; 
 		}
 		else if(iSeniority >= 3) {
-			this.iSalary=iHours * 4;
+			iSalary=iHours * 4;
 		}
 	}
 	
 	//setter and getter/
 		//set the seniority of the trainer
-	public void setSeniority(int iSeniority) {
-		this.iSeniority=iSeniority;
+	public void setSeniority(int iNewSeniority) {
+		iSeniority=iNewSeniority;
 	}
 		//set the hours of work of the trainer
-	public void setHours(int iHours) {
-		this.iHours=iHours;
+	public void setHours(int iNewHours) {
+		iHours=iNewHours;
 	}
 		//get the id
 	public int getId() {

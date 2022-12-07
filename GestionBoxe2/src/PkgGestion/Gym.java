@@ -49,12 +49,16 @@ public class Gym {
 			Rows[iCtr][0] = gym.getBoxers().get(iCtr).getId();
 			Rows[iCtr][1] = gym.getBoxers().get(iCtr).getName();
 			Rows[iCtr][2] = gym.getBoxers().get(iCtr).getLevel();
+			Rows[iCtr][3] = gym.getBoxers().get(iCtr).getFeePayed();
+			Rows[iCtr][4] = gym.getBoxers().get(iCtr).getFeeTotal();
 		}
 		JOptionPane.showMessageDialog(null, new JScrollPane(Table));
 		for(iCtr = 0;iCtr < boxers.size(); iCtr++) {
 			Rows[iCtr][0] = null;
 			Rows[iCtr][1] = null;
 			Rows[iCtr][2] = null;
+			Rows[iCtr][3] = null;
+			Rows[iCtr][4] = null;
 		}
 	}
 	
@@ -65,12 +69,16 @@ public class Gym {
 			Rows[iCtr][0] = gym.getTrainers().get(iCtr).getId();
 			Rows[iCtr][1] = gym.getTrainers().get(iCtr).getName();
 			Rows[iCtr][2] = gym.getTrainers().get(iCtr).getSeniority();
+			Rows[iCtr][3] = gym.getTrainers().get(iCtr).getHours();
+			Rows[iCtr][4] = gym.getTrainers().get(iCtr).getSalary();
 		}
 		JOptionPane.showMessageDialog(null, new JScrollPane(Table) );
 		for(iCtr = 0;iCtr < trainers.size(); iCtr++) {
 			Rows[iCtr][0] = null;
 			Rows[iCtr][1] = null;
 			Rows[iCtr][2] = null;
+			Rows[iCtr][3] = null;
+			Rows[iCtr][4] = null;
 		}
 	}
 		//get the size of the list of boxers

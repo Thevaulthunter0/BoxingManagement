@@ -36,7 +36,7 @@ public class main {
 			int iTrainerModify = 0;
 			String strTrainerModify[] = {"Add trainer", "Delete trainer", "Modify", "Return"};
 			int iModifyModifyTrainerMenu = 0;
-			String strModifyModifyTrainerMenu[] = {"Name","Seniority", "Return"};
+			String strModifyModifyTrainerMenu[] = {"Name","Seniority","Hours", "Return"};
 		//finance menus
 			int iFinanceMenu = 0;
 			String strFinanceMenu[] = {"Display", "Modify Cost" , "Return"};
@@ -54,17 +54,17 @@ public class main {
 		//Start of application
 		do {
 			//Initialization of the list of boxer for JOptionPane
-			Object[] boxerCols = {"Id", "name", "Level"};
+			Object[] boxerCols = {"Id", "name", "Level", "Fees payed", "Total fee"};
 			Object[][] boxerRows = new Object [30][boxerCols.length];
 			JTable boxerTable = new JTable(boxerRows,boxerCols);
 			JScrollPane boxersTable = new JScrollPane(boxerTable);
 			
 			//Initialization of the list of trainer for JOptionPane
-			Object[] trainerCols = {"Id", "name", "seniority"};
+			Object[] trainerCols = {"Id", "name", "seniority", "Hours worked", "Salary"};
 			Object[][] trainerRows = new Object [30][trainerCols.length];
 			JTable trainerTable = new JTable(trainerRows, trainerCols);
 			
-			iMenu= JOptionPane.showOptionDialog(null, "Welcome to your management system." +"\nPlease choose an option.", "Management", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strMenu, strMenu[0]);
+			iMenu= JOptionPane.showOptionDialog(null, "Welcome to your managing system." +"\nPlease choose an option.", "Management", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strMenu, strMenu[0]);
 			switch (iMenu) {
 //-------------------------------------------------------Boxers-------------------------------------------------------//			
 			case 0:
@@ -79,7 +79,7 @@ public class main {
 				//----------------------------------------Modify-----------------------------------------//
 				case 1:
 					do {
-						iModifyBoxerMenu = JOptionPane.showOptionDialog(null, "Where do you whant to go?", "Management/Boxers/Modify", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strModifyBoxerMenu, strModifyBoxerMenu[0]);
+						iModifyBoxerMenu = JOptionPane.showOptionDialog(null, "Where do you want to go?", "Management/Boxers/Modify", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strModifyBoxerMenu, strModifyBoxerMenu[0]);
 						switch (iModifyBoxerMenu) {
 						//----------Add boxer----------//
 						case 0:
@@ -98,7 +98,7 @@ public class main {
 							String strChoiceLevel = JOptionPane.showInputDialog("Enter the level of the boxer(1-Begginer, 2-Intermediate, 3-Professional");
 							switch (strChoiceLevel) {
 							case "1":
-								strLevel = "Begginer";
+								strLevel = "Beginer";
 								break;
 							case "2":
 								strLevel = "Intermediate";
@@ -107,7 +107,7 @@ public class main {
 								strLevel = "Professional";
 								break;
 							default:
-								strLevel = "Begginer";
+								strLevel = "Beginer";
 								break;
 							}
 							//creating the new boxer
@@ -121,7 +121,7 @@ public class main {
 						//--------Delete boxer---------//
 						case 1:
 							try {
-							iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id of the boxer you whant to delete"));
+							iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id of the boxer you want to delete"));
 							} catch (Exception e ){
 								JOptionPane.showMessageDialog(null, "Enter an Id.");
 								break;
@@ -131,7 +131,6 @@ public class main {
 							do {
 								if(iChoiceId == gym.getBoxers().get(iCtr).getId()) {
 									gym.deleteBoxer(iCtr);
-									JOptionPane.showMessageDialog(null, "Boxer " + gym.getBoxers().get(iCtr).getName() + " was deleted." );
 									i = 1;
 								}
 								iCtr++;
@@ -148,7 +147,7 @@ public class main {
 							//-----Name-----//
 							case 0:
 							try {
-							iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id of the boxer you whant to change."));
+							iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id of the boxer you want to change."));
 							iCtr=0;
 							do {
 								if(iChoiceId == gym.getBoxers().get(iCtr).getId()) {
@@ -164,7 +163,7 @@ public class main {
 							//-----Level----//
 							case 1:
 							try {
-							iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id number you whant to change the name."));
+							iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id number you want to change the name."));
 							iCtr=0;
 							do {
 								if(iChoiceId == gym.getBoxers().get(iCtr).getId()) {
@@ -192,7 +191,7 @@ public class main {
 				//--------------------------------------Update fees--------------------------------------//
 				case 2:
 					try {
-					iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id number you whant to update the fee payed."));
+					iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id number you want to update the fee payed."));
 					} catch (Exception e) {
 						JOptionPane.showMessageDialog(null, "Enter a id.");
 						break;
@@ -209,7 +208,7 @@ public class main {
 								do {
 								int iFeePayed =Integer.parseInt(JOptionPane.showInputDialog("fees paid: " + gym.getBoxers().get(iCtr).getFeePayed() + " $" + "\nfee total: " + gym.getBoxers().get(iCtr).getFeeTotal() + " $"));
 								if (iFeePayed > gym.getBoxers().get(iCtr).getFeeTotal()) {
-								JOptionPane.showMessageDialog(null, "The amount you have enter exced the amount of the fee.");
+								JOptionPane.showMessageDialog(null, "The amount you have entered exceed the amount of the fee.");
 								}
 								else if (iFeePayed == gym.getBoxers().get(iCtr).getFeeTotal()) { 
 									gym.getBoxers().get(iCtr).setFee(iFeePayed);
@@ -239,7 +238,7 @@ public class main {
 //-------------------------------------------------------Trainers-------------------------------------------------------//				
 			case 1:
 				do {
-				iTrainerMenu = JOptionPane.showOptionDialog(null, "Where do you whant to go?", "Management/Trainers", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strTrainerMenu, strTrainerMenu[0]);
+				iTrainerMenu = JOptionPane.showOptionDialog(null, "Where do you want to go?", "Management/Trainers", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strTrainerMenu, strTrainerMenu[0]);
 				switch (iTrainerMenu) {
 				//----------------------------------------Display----------------------------------------//	
 				case 0:
@@ -249,7 +248,7 @@ public class main {
 				//----------------------------------------Modify-----------------------------------------//
 				case 1:
 					do {
-					iTrainerModify = JOptionPane.showOptionDialog(null, "Where do you whant to go?", "Management/Trainers/Modify", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strTrainerModify, strTrainerModify[0]);	
+					iTrainerModify = JOptionPane.showOptionDialog(null, "Where do you want to go?", "Management/Trainers/Modify", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strTrainerModify, strTrainerModify[0]);	
 					switch (iTrainerModify) {
 					//----------Add trainer----------//
 					case 0:
@@ -266,9 +265,9 @@ public class main {
 						id = iPlace + 1;
 						try {
 						iSeniority = Integer.parseInt(JOptionPane.showInputDialog("Enter the seniority of the trainer."));
-						iHours = Integer.parseInt(JOptionPane.showInputDialog("Enter the number hours the trainer will work."));
+						iHours = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of hours the trainer will work."));
 						} catch (Exception e) {
-							JOptionPane.showMessageDialog(null, "Please enter the informations needed.");
+							JOptionPane.showMessageDialog(null, "Please enter the information needed.");
 							break;
 						}
 						//Creating the trainer object
@@ -279,7 +278,7 @@ public class main {
 					//----------Delete trainer----------//
 					case 1:
 						try {
-						iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id of the trainer you whant to delete."));
+						iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id of the trainer you hant to delete."));
 						} catch (Exception e) {
 							JOptionPane.showMessageDialog(null, "Enter an id.");
 							break;
@@ -289,7 +288,6 @@ public class main {
 						do {
 							if(iChoiceId == gym.getTrainers().get(iCtr).getId()) {
 								gym.deleteTrainer(iCtr);
-								JOptionPane.showMessageDialog(null, "You delete " + gym.getTrainers().get(iCtr).getName());
 								i = 1;
 							}
 							iCtr++;
@@ -301,12 +299,12 @@ public class main {
 					//----------Modify----------//
 					case 2:
 						do {
-						iModifyModifyTrainerMenu = JOptionPane.showOptionDialog(null, "Where do you whant to go?", "Management/Trainers/Modify/Modify", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strModifyModifyTrainerMenu, strModifyModifyTrainerMenu[0]);	
+						iModifyModifyTrainerMenu = JOptionPane.showOptionDialog(null, "Where do you want to go?", "Management/Trainers/Modify/Modify", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strModifyModifyTrainerMenu, strModifyModifyTrainerMenu[0]);	
 						switch (iModifyModifyTrainerMenu) {
 						//-----Name-----//
 						case 0:
 						try {
-						iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id of the trainer you whant to change the name."));
+						iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id of the trainer you want to change the name."));
 						} catch (Exception e) {
 							JOptionPane.showMessageDialog(null, "Enter an id.");
 							break;
@@ -316,7 +314,7 @@ public class main {
 						do {
 							if(iChoiceId == gym.getTrainers().get(iCtr).getId()) {
 								strName = JOptionPane.showInputDialog("Enter the name,");
-								gym.getTrainers().get(iChoiceId).setName(strName);
+								gym.getTrainers().get(iCtr).setName(strName);
 								i = 1;
 							}
 							iCtr++;
@@ -328,7 +326,7 @@ public class main {
 						//-----Seniority-----//	
 						case 1:
 						try {
-						iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id of the trainer you whant to delete."));
+						iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id of the trainer you want to delete."));
 						} catch (Exception e) {
 							JOptionPane.showMessageDialog(null, "Enter an id.");
 							break;
@@ -347,11 +345,33 @@ public class main {
 							JOptionPane.showMessageDialog(null, "Enter a valid id.");
 						}
 							break;
-						//-----Return-----//	
+						//-----Hours-----//	
 						case 2:
+							try {
+							iChoiceId = Integer.parseInt(JOptionPane.showInputDialog("Enter the id of the trainer you want to delete."));
+							} catch (Exception e) {
+								JOptionPane.showMessageDialog(null, "Enter an id.");
+								break;
+							}
+							i = 0;
+							iCtr=0;
+							do {
+								if(iChoiceId == gym.getTrainers().get(iCtr).getId()) {
+									iHours = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of hours worked."));
+									gym.getTrainers().get(iChoiceId).setHours(iHours);;
+									i = 1;
+								}
+								iCtr++;
+							}while(iCtr < trainerList.size());
+							if(i != 1) {
+								JOptionPane.showMessageDialog(null, "Enter a valid id.");
+							}
+								break;	
+						//-----Return-----//	
+						case 3:
 							break;
 						}	
-						}while(iModifyModifyTrainerMenu != 2);
+						}while(iModifyModifyTrainerMenu != 3);
 						break;
 					//----------Return----------//	
 					case 3:
@@ -368,7 +388,7 @@ public class main {
 //-------------------------------------------------------Finance-------------------------------------------------------//	
 			case 2:
 				do {
-					iFinanceMenu = JOptionPane.showOptionDialog(null, "Where do you whant to go?", "Management/Finance", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strFinanceMenu, strFinanceMenu[0]);	
+					iFinanceMenu = JOptionPane.showOptionDialog(null, "Where do you want to go?", "Management/Finance", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, strFinanceMenu, strFinanceMenu[0]);	
 					switch(iFinanceMenu)
 					{
 					//----------------------------------------Display-----------------------------------------//	
